@@ -19,10 +19,6 @@ class Solr:
     def __int__(self, solr_url):
         self.solr_url = solr_url
 
-    def send_req(self, req_obj):
-        result = req.post(self.solr_url)
-        print("The response is:", result)
-
     def index(self):
         movies = tfds.load("movielens/latest-small-movies", shuffle_files=False, batch_size=-1)
         ds_numpy = tfds.as_numpy(movies)
@@ -31,6 +27,18 @@ class Solr:
             movie_genres, movie_id, movie_title = item[0], item[1], item[2]
             print(movie_genres)
 
+    def add_user_rating(self, user, rating):
+        pass
+
+    def add_user(self, user):
+        pass
+
+    def add_movie(self):
+        pass
+
+    def send_req(self, req_obj):
+        result = req.post(self.solr_url)
+        print("The response is:", result)
 
 solr = Solr()
 Solr.index(solr)
