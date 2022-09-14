@@ -61,12 +61,13 @@ def transformation():
     data = None
 
     # Convert from CSV to pandas
-    if flask.request.content_type == 'text/csv':
-        data = flask.request.data.decode('utf-8')
-        s = StringIO(data)
-        data = pd.read_csv(s, header=None)
+    if flask.request.content_type == 'application/json':
+        predict = flask.request.get_json()
+        s = predict['predict']
+        data = pd.DataFrame([s])
+        print('calling with {}'.format(data))
     else:
-        return flask.Response(response='This predictor only supports CSV data', status=415, mimetype='text/plain')
+        return flask.Response(response='This predictor only supports application/json data', status=415, mimetype='text/plain')
 
     print('Invoked with {} records'.format(data.shape[0]))
 
