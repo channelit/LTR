@@ -1,4 +1,5 @@
 FROM python:3.6
+#LABEL com.amazonaws.sagemaker.capabilities.multi-models=true
 
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
          wget \
