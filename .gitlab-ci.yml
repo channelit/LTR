@@ -1,0 +1,38 @@
+image:
+  name: hashicorp/terraform:1.1.6
+  entrypoint:
+    - '/usr/bin/env'
+    - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+
+stages:
+  - deploy
+# services:
+#   - docker:20.10.16-dind
+# docker_build:
+#   stage: build
+#   image: docker:20.10.16
+#   tags:
+#     - gitlab-org-docker
+#   script:
+#     - apk add py3-pip
+#     - pip install awscli
+#     - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+#     - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+#     - echo $AWS_DEFAULT_REGION
+#     - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+#     - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+#     - aws configure set default.region $AWS_DEFAULT_REGION
+#     - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 122936777114.dkr.ecr.us-east-1.amazonaws.com
+#     - cd hello_world/container
+#     - docker build --platform=linux/amd64 -t cits_byo .
+#     - docker tag cits_byo:latest 122936777114.dkr.ecr.us-east-1.amazonaws.com/cits_byo
+#     - docker push 122936777114.dkr.ecr.us-east-1.amazonaws.com/cits_byo
+
+terraform_deploy:
+  stage: deploy
+  script:
+    - cd deploy
+    - terraform init
+    - terraform destroy -auto-approve
+    - terraform plan
+    - terraform apply -auto-approve
