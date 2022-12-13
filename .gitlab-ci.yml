@@ -30,6 +30,7 @@ stages:
 
 terraform_deploy:
   stage: deploy
+  when: manual
   script:
     - cd deploy
     - terraform init
