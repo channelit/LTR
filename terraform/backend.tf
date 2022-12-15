@@ -3,7 +3,7 @@ terraform {
     bucket         = "cits-tfstate"
     key            = "state/terraform.tfstate"
     encrypt        = false
-    dynamodb_table = aws_dynamodb_table.cits-tfstate.name
+    dynamodb_table = "cits-tfstate"
   }
 }
 resource "aws_s3_bucket" "cits-tfstate" {
