@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
     bucket         = "cits-tfstate"
-    key            = "cits-tfstate.tfstate"
+    key            = "state/terraform.tfstate"
     encrypt        = false
-    dynamodb_table = "cits-tfstate-lock"
+    dynamodb_table = aws_dynamodb_table.cits-tfstate.name
   }
 }
 resource "aws_s3_bucket" "cits-tfstate" {
