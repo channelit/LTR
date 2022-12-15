@@ -33,7 +33,7 @@ terraform_deploy:
   when: manual
   script:
     - cd terraform
-    - terraform init -reconfigure
+    - terraform init -lock=false
 #    - terraform destroy -auto-approve
     - terraform plan
     - terraform apply -auto-approve
