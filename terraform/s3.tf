@@ -1,14 +1,4 @@
 
-terraform {
-
-  backend "s3" {
-    bucket         = "cits-tfstate"
-    key            = "cits-tfstate.tfstate"
-    encrypt        = false
-    dynamodb_table = "cits-tfstate-lock"
-  }
-}
-
 resource "aws_s3_bucket" "sagemaker_2" {
   bucket = "cits-sagemaker-2"
   tags = {
