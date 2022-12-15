@@ -1,11 +1,5 @@
 
 terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.16"
-    }
-  }
 
   backend "s3" {
     bucket         = "cits-tfstate"
@@ -13,10 +7,6 @@ terraform {
     encrypt        = false
     dynamodb_table = "cits-tfstate-lock"
   }
-}
-
-provider "aws" {
-  region     = "us-east-1"
 }
 
 resource "aws_s3_bucket" "sagemaker_2" {

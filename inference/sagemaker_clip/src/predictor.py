@@ -1,3 +1,4 @@
+import json
 import os
 import flask
 
@@ -30,9 +31,6 @@ def transformation():
         return flask.Response(response='This predictor only supports application/json data', status=415,
                               mimetype='text/plain')
 
-    print('Invoked with {} records'.format(data.shape[0]))
-
-    # Do the prediction
+    print('Invoked with {}'.format(s))
     predictions = inference.predict(s)
-
     return flask.Response(response=json.dumps(predictions), status=200, mimetype='text/csv')
