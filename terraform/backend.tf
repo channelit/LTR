@@ -6,3 +6,10 @@ terraform {
     dynamodb_table = "cits-tfstate-lock"
   }
 }
+resource "aws_s3_bucket" "cits-tfstate" {
+  bucket = "cits-tfstate"
+  tags = {
+    Name        = "cits-tfstate"
+    Environment = "Dev"
+  }
+}
