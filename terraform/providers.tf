@@ -1,5 +1,5 @@
 provider "aws" {
-  region     = "us-east-1"
+  region = "us-east-1"
 }
 
 terraform {
@@ -7,6 +7,10 @@ terraform {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 4.16"
+    }
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "2.15.0"
     }
   }
 }
