@@ -10,6 +10,6 @@ resource "aws_s3_bucket" "sagemaker_2" {
 resource "aws_s3_object" "object" {
   bucket = aws_s3_bucket.sagemaker_2.id
   key    = "sagemaker_2.model"
-  source = "../hello_world/readme.md"
-  etag = filemd5("../hello_world/readme.md")
+  source = "../inference/sagemaker_clip/model.pkl"
+  etag = filemd5("../inference/sagemaker_clip/model.pkl")
 }

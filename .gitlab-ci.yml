@@ -34,6 +34,6 @@ terraform_deploy:
   script:
     - cd terraform
     - terraform init -lock=false
-#    - terraform destroy -auto-approve
+    - terraform destroy -auto-approve
     - terraform plan -lock=false
     - terraform apply -auto-approve
