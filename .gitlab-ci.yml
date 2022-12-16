@@ -4,6 +4,9 @@ image:
     - '/usr/bin/env'
     - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
+services:
+  - docker:20.10.16-dind
+
 stages:
   - deploy
 #services:
@@ -30,8 +33,6 @@ stages:
 
 terraform_deploy_dev:
   stage: deploy
-  services:
-    - docker:20.10.16-dind
   when: manual
   environment:
     name: dev
