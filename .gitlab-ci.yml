@@ -6,8 +6,8 @@ image:
 
 stages:
   - deploy
-# services:
-#   - docker:20.10.16-dind
+#services:
+#  - docker:20.10.16-dind
 # docker_build:
 #   stage: build
 #   image: docker:20.10.16
@@ -30,6 +30,8 @@ stages:
 
 terraform_deploy_dev:
   stage: deploy
+  services:
+    - docker:20.10.16-dind
   when: manual
   environment:
     name: dev
