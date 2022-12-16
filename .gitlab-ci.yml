@@ -28,9 +28,11 @@ stages:
 #     - docker tag cits_byo:latest 122936777114.dkr.ecr.us-east-1.amazonaws.com/cits_byo
 #     - docker push 122936777114.dkr.ecr.us-east-1.amazonaws.com/cits_byo
 
-terraform_deploy:
+terraform_deploy_dev:
   stage: deploy
   when: manual
+  environment:
+    name: dev
   script:
     - cd terraform
     - terraform init -lock=false
